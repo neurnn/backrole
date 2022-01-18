@@ -17,7 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Misc", "00. Misc", "{F4
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		publish.bat = publish.bat
+		publish.sh = publish.sh
+		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Extensions", "02. Extensions", "{CDB57E9B-ACEE-4BAB-8BBF-C0606CF3BC65}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backrole.Core.Configurations.Json", "src\Backrole.Core.Configurations.Json\Backrole.Core.Configurations.Json.csproj", "{E06EE622-3D80-4DC2-BA63-D84A95A6D27C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +43,10 @@ Global
 		{75A91319-6ACD-44F5-87D2-4640205A2FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75A91319-6ACD-44F5-87D2-4640205A2FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75A91319-6ACD-44F5-87D2-4640205A2FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E06EE622-3D80-4DC2-BA63-D84A95A6D27C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E06EE622-3D80-4DC2-BA63-D84A95A6D27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E06EE622-3D80-4DC2-BA63-D84A95A6D27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E06EE622-3D80-4DC2-BA63-D84A95A6D27C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +55,7 @@ Global
 		{0BE59915-9CA5-44B7-9480-FAF5EBE6C8D5} = {EABE1438-8975-489D-81F9-90FF2C068D21}
 		{783AD7B2-C1DB-4709-BA28-F7C813D39006} = {EABE1438-8975-489D-81F9-90FF2C068D21}
 		{75A91319-6ACD-44F5-87D2-4640205A2FF1} = {0898EFFC-B3D7-4C4A-9F5D-493748FB0F61}
+		{E06EE622-3D80-4DC2-BA63-D84A95A6D27C} = {CDB57E9B-ACEE-4BAB-8BBF-C0606CF3BC65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {72063326-298A-4CDB-9A02-E0398BB5D122}

@@ -1,6 +1,7 @@
 ﻿using Backrole.Core.Abstractions;
 using Backrole.Core.Abstractions.Defaults;
 using Backrole.Core.Builders;
+using Backrole.Core.Configurations.Json;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
@@ -26,6 +27,12 @@ namespace Backrole.Core.TestApp
                     {
                         Options.AsLowerCase = true;
                     });
+
+                    Configurations.AddJsonFile("appsettings.json", true, Options =>
+                    {
+                        Options.Prefix = "app";
+                        Options.AsLowerCase = true;
+                    });
                 })
                 .ConfigureLoggings(Loggings =>
                 {
@@ -38,6 +45,8 @@ namespace Backrole.Core.TestApp
                 })
                 .ConfigureServices(Services =>
                 {
+                    Services
+                        .AddSingleton<Test>();
                 })
                 .Configure<TestContainerBuilder>()
                 .Build()
@@ -53,7 +62,6 @@ namespace Backrole.Core.TestApp
             protected override void OnConfigureServices(IServiceCollection Services)
             {
                 Services
-                    .AddSingleton<Test>()
                     .AddHostedService<TestService>();
             }
         }
@@ -120,6 +128,9 @@ namespace Backrole.Core.TestApp
             [ServiceInjection]
             private Test m_Test = null;
 
+            [ServiceInjection]
+            private Test m_Test2 = null;
+
             public Task StartAsync(CancellationToken Token = default)
             {
                 return m_Test.Hello();
@@ -127,7 +138,10 @@ namespace Backrole.Core.TestApp
 
             public Task StopAsync()
             {
-                return m_Test.Hello();
+                if (m_Test == m_Test2)
+                    return m_Test2.Hello();
+
+                return Task.CompletedTask;
             }
         }
     }
