@@ -15,10 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backrole.Core.TestApp", "te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Misc", "00. Misc", "{F4D4A460-E990-4C64-A556-CAAE451DA153}"
 	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
 		publish.bat = publish.bat
 		publish.sh = publish.sh
-		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Extensions", "02. Extensions", "{CDB57E9B-ACEE-4BAB-8BBF-C0606CF3BC65}"
