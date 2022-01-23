@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Backrole.Core" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Backrole.Http.Abstractions\Backrole.Http.Abstractions.csproj" />
+    <ProjectReference Include="..\Backrole.Http.Transports.Nova\Backrole.Http.Transports.Nova.csproj" />
+  </ItemGroup>
+
+</Project>
