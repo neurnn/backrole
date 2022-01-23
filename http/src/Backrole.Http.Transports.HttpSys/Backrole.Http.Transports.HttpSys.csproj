@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>jay94ks</Authors>
+    <Company>neurnn corp</Company>
+    <Copyright>copyright (c) 2022 neurnn corp, all rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/neurnn/backrole</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/neurnn/backrole</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +33,13 @@
 
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
