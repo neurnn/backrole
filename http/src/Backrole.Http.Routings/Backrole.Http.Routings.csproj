@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Backrole.Http.Abstractions\Backrole.Http.Abstractions.csproj" />
+    <ProjectReference Include="..\Backrole.Http.Routings.Abstractions\Backrole.Http.Routings.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

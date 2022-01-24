@@ -19,6 +19,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backrole.Http.Transports.Ht
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backrole.Http.Transports.Nova", "src\Backrole.Http.Transports.Nova\Backrole.Http.Transports.Nova.csproj", "{356A9916-DA2B-49A9-98A4-941C2C4C535E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Misc", "00. Misc", "{AA465DD1-9F47-46C4-A316-25D2EB31CBE2}"
+	ProjectSection(SolutionItems) = preProject
+		publish.bat = publish.bat
+		publish.sh = publish.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Routings", "03. Routings", "{6A216112-BEF8-4033-A8FD-BA65E0FA8B7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backrole.Http.Routings.Abstractions", "src\Backrole.Http.Routings.Abstractions\Backrole.Http.Routings.Abstractions.csproj", "{7676AC84-EE6C-46E9-AE56-40A787BF3C21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backrole.Http.Routings", "src\Backrole.Http.Routings\Backrole.Http.Routings.csproj", "{2933D8F1-4839-457F-A2CC-17837DF0F3C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +57,14 @@ Global
 		{356A9916-DA2B-49A9-98A4-941C2C4C535E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{356A9916-DA2B-49A9-98A4-941C2C4C535E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{356A9916-DA2B-49A9-98A4-941C2C4C535E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7676AC84-EE6C-46E9-AE56-40A787BF3C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7676AC84-EE6C-46E9-AE56-40A787BF3C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7676AC84-EE6C-46E9-AE56-40A787BF3C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7676AC84-EE6C-46E9-AE56-40A787BF3C21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2933D8F1-4839-457F-A2CC-17837DF0F3C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2933D8F1-4839-457F-A2CC-17837DF0F3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2933D8F1-4839-457F-A2CC-17837DF0F3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2933D8F1-4839-457F-A2CC-17837DF0F3C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +75,8 @@ Global
 		{A36509B3-F70E-4CDC-8572-8D79C48966E6} = {0AAF5D8B-9792-4D4A-9149-C1018E55F5A5}
 		{45D9AA50-B43F-4E1C-9002-CE39BE325745} = {70427575-7A7C-4365-9569-80092BAD567B}
 		{356A9916-DA2B-49A9-98A4-941C2C4C535E} = {70427575-7A7C-4365-9569-80092BAD567B}
+		{7676AC84-EE6C-46E9-AE56-40A787BF3C21} = {6A216112-BEF8-4033-A8FD-BA65E0FA8B7F}
+		{2933D8F1-4839-457F-A2CC-17837DF0F3C3} = {6A216112-BEF8-4033-A8FD-BA65E0FA8B7F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F4DAE46-B22E-4159-B583-B70FDE4E5148}
