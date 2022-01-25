@@ -3,6 +3,7 @@ using Backrole.Core.Builders;
 using Backrole.Http.Abstractions;
 using Backrole.Http.Routings;
 using Backrole.Http.Routings.Abstractions;
+using Backrole.Http.Routings.Results;
 using Backrole.Http.StaticFiles;
 using Backrole.Http.Transports.HttpSys;
 using Backrole.Http.Transports.Nova;
@@ -106,6 +107,12 @@ namespace Backrole.Http.TestApp
                     await Http.Response.OutputStream.WriteAsync(
                         Encoding.UTF8.GetBytes(Line));
                 }
+            }
+
+            [HttpRoute(Path = "test2", Method = "GET")]
+            public IHttpResult Test(IHttpContext Http)
+            {
+                return new RedirectResult("/", true);
             }
         }
     }

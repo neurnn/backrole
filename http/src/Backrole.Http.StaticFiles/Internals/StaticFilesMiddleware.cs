@@ -160,6 +160,7 @@ namespace Backrole.Http.StaticFiles.Internals
             }
         }
 
+
         private static Guid MakeETag(string String)
         {
             // 16 byte.
