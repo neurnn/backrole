@@ -3,6 +3,7 @@ using Backrole.Http.Abstractions;
 using Backrole.Http.Routings.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Backrole.Http.Routings.Internals
@@ -60,5 +61,19 @@ namespace Backrole.Http.Routings.Internals
         /// <returns></returns>
         public static HttpRouterContext GetRouterContext(this IHttpContext This)
             => This.Properties.GetValue(typeof(IHttpRouterContext), () => new HttpRouterContext(This));
+
+        /// <summary>
+        /// Set Encoding to Mime Type.
+        /// </summary>
+        /// <param name="MimeType"></param>
+        /// <param name="Encoding"></param>
+        /// <returns></returns>
+        public static string SetEncodingToMimeType(string MimeType, Encoding Encoding)
+        {
+            return string.Join("; ", MimeType
+                .Split(';', StringSplitOptions.RemoveEmptyEntries)
+                .Where(X => !X.Contains("charset=", StringComparison.OrdinalIgnoreCase))
+                .Append($"charset={Encoding.WebName}"));
+        }
     }
 }

@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Backrole.Http.Routings\Backrole.Http.Routings.csproj" />
+    <ProjectReference Include="..\..\src\Backrole.Http.StaticFiles\Backrole.Http.StaticFiles.csproj" />
     <ProjectReference Include="..\..\src\Backrole.Http.Transports.HttpSys\Backrole.Http.Transports.HttpSys.csproj" />
     <ProjectReference Include="..\..\src\Backrole.Http.Transports.Nova\Backrole.Http.Transports.Nova.csproj" />
     <ProjectReference Include="..\..\src\Backrole.Http\Backrole.Http.csproj" />

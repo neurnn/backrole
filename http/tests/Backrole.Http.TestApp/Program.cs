@@ -3,6 +3,7 @@ using Backrole.Core.Builders;
 using Backrole.Http.Abstractions;
 using Backrole.Http.Routings;
 using Backrole.Http.Routings.Abstractions;
+using Backrole.Http.StaticFiles;
 using Backrole.Http.Transports.HttpSys;
 using Backrole.Http.Transports.Nova;
 using System;
@@ -32,6 +33,12 @@ namespace Backrole.Http.TestApp
                         {
 
                             await Next();
+                        });
+
+                        App.UseStaticFiles(Options =>
+                        {
+                            Options.Directory = new DirectoryInfo(".");
+                            Options.DisallowPrefix(".");
                         });
 
                         App.UseRouter(Router =>
