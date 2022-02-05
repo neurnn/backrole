@@ -2,10 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>jay94ks</Authors>
+    <Company>neurnn corp</Company>
+    <Copyright>copyright (c) 2022 neurnn corp, all rights reserved.</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/neurnn/backrole</PackageProjectUrl>
+    <RepositoryType>github</RepositoryType>
+    <RepositoryUrl>https://github.com/neurnn/backrole</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Backrole.Orp.Abstractions\Backrole.Orp.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

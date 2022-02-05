@@ -9,9 +9,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backrole.Orp.Abstractions",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backrole.Orp", "src\Backrole.Orp\Backrole.Orp.csproj", "{97769CC5-F4B8-4932-96FE-713D510024D6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Tests", "02. Tests", "{93161237-70E5-4A91-9107-F3E93B651D4D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99. Tests", "99. Tests", "{93161237-70E5-4A91-9107-F3E93B651D4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backrole.Orp.Tests", "tests\Backrole.Orp.Tests\Backrole.Orp.Tests.csproj", "{7C38AE3A-B178-4170-AA00-B19EFD6CF1AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Misc", "00. Misc", "{441ADE20-DD09-4DB2-8D44-D3B67048791D}"
+	ProjectSection(SolutionItems) = preProject
+		publish.bat = publish.bat
+		publish.sh = publish.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
