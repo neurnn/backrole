@@ -1,16 +1,12 @@
 ﻿using Backrole.Orp.Abstractions;
-using Backrole.Orp.Meshes.Internals.A_Messages;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace Backrole.Orp.Meshes.Internals
 {
-    class OrpMessageBox
+    internal class OrpMessageBox
     {
         private Channel<OrpMeshMessage> m_Channel;
 

@@ -56,5 +56,14 @@ namespace Backrole.Orp.Abstractions
         /// <param name="Token"></param>
         /// <returns></returns>
         Task<int> DiscoverAsync(CancellationToken Token = default);
+
+        /// <summary>
+        /// Broadcast a message to all remote hosts asynchronously. (Only to directly connected peers)
+        /// </summary>
+        /// <exception cref="InvalidOperationException">when the server isn't started yet.</exception>
+        /// <param name="Message"></param>
+        /// <param name="Token"></param>
+        /// <returns></returns>
+        Task<OrpMeshBroadcastStatus> BroadcastAsync(object Message, CancellationToken Token = default);
     }
 }

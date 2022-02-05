@@ -2,13 +2,10 @@
 using Backrole.Orp.Internals;
 using Backrole.Orp.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 using System.Threading.Channels;
 using System.Threading.Tasks;
@@ -344,7 +341,9 @@ namespace Backrole.Orp
                 throw new ArgumentException("Not mapped type, or it should implement IOrpPackable to be emitted.");
 
             if (IsConnected)
+            {
                 return await m_Outgoings.SendAsync(Name, Packer, Token);
+            }
 
             throw new InvalidOperationException("Connection is dead.");
         }
@@ -368,5 +367,6 @@ namespace Backrole.Orp
 
         /// <inheritdoc/>
         public ValueTask DisposeAsync() => DisconnectAsync();
+
     }
 }

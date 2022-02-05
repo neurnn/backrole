@@ -63,7 +63,13 @@ namespace Backrole.Orp.Meshes.Internals
                       m_Peers.Remove(Peer);
             }
 
+            var Modules = Mesh.Options.ProtocolModules;
+            var Queue = new Queue<IOrpMeshProtocolModule>(Modules);
+
             StateChanged?.Invoke(this, Peer);
+
+            while (Queue.TryDequeue(out var Module))
+                Module.OnStatusChanged(Peer);
         }
 
         /// <inheritdoc/>
@@ -112,10 +118,35 @@ namespace Backrole.Orp.Meshes.Internals
                 return m_Peers.FindAll(Filter);
         }
 
+        /// <inheritdoc/>
+        public async Task<OrpMeshBroadcastStatus> BroadcastAsync(object Message, CancellationToken Token = default)
+        {
+            var Peers = GetPeers();
+            var RealPeers = new List<IOrpMeshPeer>();
+            var TimeStamp = DateTime.UtcNow;
+
+            foreach (var Each in Peers.Where(X => X.State == OrpMeshPeerState.Connected))
+            {
+                try
+                {
+                    if (RealPeers.Find(X => X.RemoteMeshToken.Equals(Each.RemoteMeshToken)) != null)
+                        continue;
+
+                    var Emit = await Each.EmitAsync(Message, Token);
+                    if (Emit.Destination != null && Emit.Message != null)
+                        RealPeers.Add(Each);
+                }
+                catch
+                {
+                }
+            }
+
+            return new OrpMeshBroadcastStatus(RealPeers.ToArray(), TimeStamp, Message);
+        }
+
         public Task<int> DiscoverAsync(CancellationToken Token = default)
         {
             throw new NotImplementedException();
         }
-
     }
 }

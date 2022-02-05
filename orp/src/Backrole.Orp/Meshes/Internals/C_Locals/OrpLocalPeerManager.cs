@@ -1,6 +1,7 @@
 ﻿using Backrole.Orp.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -260,9 +261,27 @@ namespace Backrole.Orp.Meshes.Internals.C_Locals
                     if (Message.Source.UserState is not OrpLocalPeer Peer)
                         continue;
 
+                    if (Peer.State == OrpMeshPeerState.Connected)
+                    {
+                        var Modules = m_Mesh.Options.ProtocolModules;
+                        var Queue = new Queue<IOrpMeshProtocolModule>(Modules);
+
+                        await ExecuteModules(Peer, Queue, Message);
+                        continue;
+                    }
+
                     await Peer.HandleAsync(Message.Message);
                 }
             }
+        }
+
+        [DebuggerHidden]
+        private Task ExecuteModules(OrpLocalPeer Peer, Queue<IOrpMeshProtocolModule> Queue, OrpMessage Message)
+        {
+            if (Queue.TryDequeue(out var Module))
+                return Module.OnMessageAsync(Message, () => ExecuteModules(Peer, Queue, Message));
+
+            return Peer.HandleAsync(Message);
         }
 
         /// <summary>

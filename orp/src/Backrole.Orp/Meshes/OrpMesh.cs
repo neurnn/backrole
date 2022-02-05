@@ -1,5 +1,6 @@
 ﻿using Backrole.Orp.Abstractions;
 using Backrole.Orp.Meshes.Internals;
+using Backrole.Orp.Meshes.Internals.A_Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,33 +74,15 @@ namespace Backrole.Orp.Meshes
             => MessageBox.WaitAsync(Token);
 
         /// <inheritdoc/>
-        public async Task<OrpMeshBroadcastStatus> BroadcastAsync(object Message, CancellationToken Token = default)
+        public Task<OrpMeshBroadcastStatus> BroadcastAsync(object Message, CancellationToken Token = default)
         {
-            var Peers = m_Peers.GetPeers();
-            var RealPeers = new List<IOrpMeshPeer>();
-            var TimeStamp = DateTime.UtcNow;
-
-            foreach(var Each in Peers.Where(X => X.State == OrpMeshPeerState.Connected))
-            {
-                try
-                {
-                    if (RealPeers.Find(X => X.RemoteMeshToken.Equals(Each.RemoteMeshToken)) != null)
-                        continue;
-
-                    var Emit = await Each.EmitAsync(Message, Token);
-                    if (Emit.Destination != null && Emit.Message != null)
-                        RealPeers.Add(Each);
-                }
-                catch
-                {
-                }
-            }
-
-            return new OrpMeshBroadcastStatus(RealPeers.ToArray(), TimeStamp, Message);
+            return m_Peers.BroadcastAsync(Message, Token);
         }
 
+        /// <inheritdoc/>
         public void Dispose() => Stop();
 
+        /// <inheritdoc/>
         public async ValueTask DisposeAsync()
         {
             m_Server.Stop();

@@ -72,7 +72,6 @@ namespace Backrole.Orp.Tests
                 while (true)
                 {
                     var Message = await Mesh.WaitAsync();
-
                     Console.WriteLine($"Message, {Message.TimeStamp.ToString("o")} --");
                     Console.WriteLine(JsonConvert.SerializeObject(Message.Message));
                     Console.WriteLine();
@@ -82,6 +81,7 @@ namespace Backrole.Orp.Tests
             while(true)
             {
                 var Line = Console.ReadLine();
+
                 await Mesh.BroadcastAsync(new Test { Message = Line });
             }
         }
@@ -104,4 +104,5 @@ namespace Backrole.Orp.Tests
             return true;
         }
     }
+    
 }

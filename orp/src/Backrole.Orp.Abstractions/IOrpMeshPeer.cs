@@ -43,6 +43,5 @@ namespace Backrole.Orp.Abstractions
         /// <exception cref="FormatException">when failed to pack the message.</exception>
         /// <returns></returns>
         Task<OrpMeshEmitStatus> EmitAsync(object Message, CancellationToken Token = default);
-
     }
 }

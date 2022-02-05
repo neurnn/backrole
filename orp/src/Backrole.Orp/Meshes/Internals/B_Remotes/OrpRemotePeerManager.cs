@@ -1,6 +1,7 @@
 ﻿using Backrole.Orp.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -127,26 +128,22 @@ namespace Backrole.Orp.Meshes.Internals.B_Remotes
         {
             while(true)
             {
-                IOrpClient Connection;
-                object Message;
+                OrpMessage Data;
 
                 try
                 {
-                    var Data = await m_Server.WaitAsync();
+                    Data = await m_Server.WaitAsync();
                     if (Data.Message is null || Data.Source is null)
                         continue;
-
-                    Connection = Data.Source;
-                    Message = Data.Message;
                 }
                 catch
                 {
                     break;
                 }
 
-                if (Connection.UserState is not OrpRemotePeer Peer)
+                if (Data.Source.UserState is not OrpRemotePeer Peer)
                 {
-                    await Connection.DisposeAsync();
+                    await Data.Source.DisposeAsync();
                     continue;
                 }
 
@@ -156,8 +153,26 @@ namespace Backrole.Orp.Meshes.Internals.B_Remotes
                         continue;
                 }
 
-                await Peer.HandleAsync(Message);
+                if (Peer.State == OrpMeshPeerState.Connected)
+                {
+                    var Modules = m_Mesh.Options.ProtocolModules;
+                    var Queue = new Queue<IOrpMeshProtocolModule>(Modules);
+
+                    await ExecuteModules(Peer, Queue, Data);
+                    continue;
+                }
+
+                await Peer.HandleAsync(Data.Message);
             }
+        }
+
+        [DebuggerHidden]
+        private Task ExecuteModules(OrpRemotePeer Peer, Queue<IOrpMeshProtocolModule> Queue, OrpMessage Message)
+        {
+            if (Queue.TryDequeue(out var Module))
+                return Module.OnMessageAsync(Message, () => ExecuteModules(Peer, Queue, Message));
+
+            return Peer.HandleAsync(Message);
         }
     }
 }

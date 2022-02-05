@@ -12,6 +12,11 @@ namespace Backrole.Orp.Abstractions
         new IOrpOptions ProtocolOptions { get; set; }
 
         /// <summary>
+        /// Protocol Extension modules.
+        /// </summary>
+        new IList<IOrpMeshProtocolModule> ProtocolModules { get; }
+
+        /// <summary>
         /// Address to advertise to other peers.
         /// If null, this will not advertise itself.
         /// </summary>

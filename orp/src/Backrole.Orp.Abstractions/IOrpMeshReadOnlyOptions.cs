@@ -12,6 +12,11 @@ namespace Backrole.Orp.Abstractions
         IOrpReadOnlyOptions ProtocolOptions { get; }
 
         /// <summary>
+        /// Protocol Extension modules.
+        /// </summary>
+        IReadOnlyList<IOrpMeshProtocolModule> ProtocolModules { get; }
+
+        /// <summary>
         /// Address to advertise to other peers.
         /// If null, this will not advertise itself.
         /// </summary>

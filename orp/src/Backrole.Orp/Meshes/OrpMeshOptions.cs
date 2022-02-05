@@ -10,6 +10,7 @@ namespace Backrole.Orp.Meshes
     public class OrpMeshOptions : IOrpMeshOptions
     {
         private List<IPEndPoint> m_InitialPeers = new();
+        private List<IOrpMeshProtocolModule> m_ProtocolModules = new();
         private IOrpOptions m_Options = new OrpOptions();
 
         /// <summary>
@@ -36,6 +37,9 @@ namespace Backrole.Orp.Meshes
                     MapMeshMessages(m_Options = new OrpOptions());
             }
         }
+
+        /// <inheritdoc/>
+        public IList<IOrpMeshProtocolModule> ProtocolModules => m_ProtocolModules;
 
         /// <summary>
         /// Map ORP Protocol Messages.
@@ -65,5 +69,7 @@ namespace Backrole.Orp.Meshes
         /// <inheritdoc/>
         IOrpReadOnlyOptions IOrpMeshReadOnlyOptions.ProtocolOptions => ProtocolOptions;
 
+        /// <inheritdoc/>
+        IReadOnlyList<IOrpMeshProtocolModule> IOrpMeshReadOnlyOptions.ProtocolModules => m_ProtocolModules;
     }
 }

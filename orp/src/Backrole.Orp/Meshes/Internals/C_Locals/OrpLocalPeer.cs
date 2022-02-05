@@ -88,12 +88,17 @@ namespace Backrole.Orp.Meshes.Internals.C_Locals
             return new OrpMeshEmitStatus(this, Emit.TimeStamp, Emit.Message);
         }
 
-
+        /// <summary>
+        /// Handle messages.
+        /// </summary>
+        /// <param name="Message"></param>
+        /// <returns></returns>
         public async Task HandleAsync(object Message)
         {
             switch (State)
             {
                 case OrpMeshPeerState.Handshaking:
+
                     try { await HandshakeAsync(Message); }
                     catch
                     {
@@ -118,8 +123,6 @@ namespace Backrole.Orp.Meshes.Internals.C_Locals
         private INIT_CheckReply m_RemoteCheckReply;
         private INIT_CheckReply m_LocalCheckReply;
 
-        private DateTime? m_DeadAt;
-
         /// <summary>
         /// Reset the handshake state on connected
         /// And reset the timer.
@@ -130,7 +133,6 @@ namespace Backrole.Orp.Meshes.Internals.C_Locals
             m_RemoteCheck = m_LocalCheck = null;
             m_RemoteCheckReply = null;
             m_LocalCheckReply = null;
-            m_DeadAt = null;
         }
 
         /// <summary>
@@ -139,7 +141,6 @@ namespace Backrole.Orp.Meshes.Internals.C_Locals
         public void OnDisconnected()
         {
             m_Retries = 0;
-            m_DeadAt = DateTime.Now;
         }
 
         private Task m_TaskRecover;
