@@ -23,7 +23,7 @@ namespace Backrole.Http.Internals.Builders
         /// </summary>
         /// <param name="HostServices"></param>
         public HttpContainerBuilder(IServiceProvider HostServices) : base(HostServices)
-            => this.ConfigureTransport(X => X.UseNova());
+            => ConfigureTransport(X => X.UseNova());
 
         /// <inheritdoc/>
         public IHttpContainerBuilder ConfigureServices(Action<IServiceCollection> Delegate)
